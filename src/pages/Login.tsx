@@ -89,7 +89,7 @@ export default function Login({ navigation }: StackScreenProps<any>) {
         <LinearGradient
             start={{ x: 0.0, y: 0.0 }}
             end={{ x: 1.0, y: 1.0 }}
-            colors={['#031A62', '#00A3FF']}
+            colors={['#790d31ff', '#790d31ff']}
             style={styles.gradientContainer}
         >
             {isFocused && <StatusBar animated translucent style="light" />}
@@ -98,8 +98,9 @@ export default function Login({ navigation }: StackScreenProps<any>) {
                 contentContainerStyle={{
                     padding: 24,
                     flexGrow: 1,
-                    justifyContent: 'center',
+                    justifyContent: 'flex-start',
                     alignItems: 'stretch',
+                    marginTop: 300,
                 }}
             >
                 <Image
@@ -112,26 +113,23 @@ export default function Login({ navigation }: StackScreenProps<any>) {
                     source={logoImg}
                 />
                 <Spacer size={80} />
-                <View style={styles.inputLabelRow}>
-                    <Text style={styles.label}>Email</Text>
-                    {emailIsInvalid && <Text style={styles.error}>invalid email</Text>}
-                </View>
                 <TextInput
+                    placeholder="Email"
+                    placeholderTextColor="#ccc"
                     style={[styles.input, emailIsInvalid && styles.invalid]}
                     onChangeText={(value) => setEmail(value)}
                     onEndEditing={isEmailInvalid}
-                />
+                    />
 
-                <View style={styles.inputLabelRow}>
-                    <Text style={styles.label}>Password</Text>
-                    {passwordIsInvalid && <Text style={styles.error}>invalid password</Text>}
-                </View>
-                <TextInput
-                    style={[styles.input, passwordIsInvalid && styles.invalid]}
+                    <TextInput
+                    placeholder="Password"
+                    placeholderTextColor="#ccc"
                     secureTextEntry={true}
+                    style={[styles.input, passwordIsInvalid && styles.invalid]}
                     onChangeText={(value) => setPassword(value)}
                     onEndEditing={isPasswordInvalid}
-                />
+                    />
+
                 <Spacer size={80} />
                 <BigButton style={{ marginBottom: 8 }} onPress={handleAuthentication} label="Log in" color="#FF8700" />
                 <Spinner
