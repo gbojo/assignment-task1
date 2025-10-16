@@ -98,9 +98,8 @@ export default function Login({ navigation }: StackScreenProps<any>) {
                 contentContainerStyle={{
                     padding: 24,
                     flexGrow: 1,
-                    justifyContent: 'flex-start',
+                    justifyContent: 'center',
                     alignItems: 'stretch',
-                    marginTop: 300,
                 }}
             >
                 <Image
@@ -113,23 +112,26 @@ export default function Login({ navigation }: StackScreenProps<any>) {
                     source={logoImg}
                 />
                 <Spacer size={80} />
+                <View style={styles.inputLabelRow}>
+                    <Text style={styles.label}>Email</Text>
+                    {emailIsInvalid && <Text style={styles.error}>invalid email</Text>}
+                </View>
                 <TextInput
-                    placeholder="Email"
-                    placeholderTextColor="#ccc"
                     style={[styles.input, emailIsInvalid && styles.invalid]}
                     onChangeText={(value) => setEmail(value)}
                     onEndEditing={isEmailInvalid}
-                    />
+                />
 
-                    <TextInput
-                    placeholder="Password"
-                    placeholderTextColor="#ccc"
-                    secureTextEntry={true}
+                <View style={styles.inputLabelRow}>
+                    <Text style={styles.label}>Password</Text>
+                    {passwordIsInvalid && <Text style={styles.error}>invalid password</Text>}
+                </View>
+                <TextInput
                     style={[styles.input, passwordIsInvalid && styles.invalid]}
+                    secureTextEntry={true}
                     onChangeText={(value) => setPassword(value)}
                     onEndEditing={isPasswordInvalid}
-                    />
-
+                />
                 <Spacer size={80} />
                 <BigButton style={{ marginBottom: 8 }} onPress={handleAuthentication} label="Log in" color="#FF8700" />
                 <Spinner
